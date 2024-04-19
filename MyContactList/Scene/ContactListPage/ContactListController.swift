@@ -14,6 +14,7 @@ class ContactListController: UIViewController {
 
     
     var viewModel = ContactListViewModel()
+    
     let searchController = UISearchController(searchResultsController:SearchResultController())
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -61,8 +62,6 @@ class ContactListController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-    
-    
 
 }
 
@@ -95,6 +94,23 @@ extension ContactListController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
     }
+    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let key = viewModel.sectionTitles[indexPath.section]
+        guard let contact = viewModel.array[key]?[indexPath.row] else {
+            return
+        }
+        // Here you can navigate to a new view controller to show the detailed information
+        print(contact)
+    }
+//
+//    func showContactDetails(_ contact: ContactDataStruct) {
+//        // Instantiate a new view controller to show the details
+//        let detailViewController = ContactDetailViewController()
+//        detailViewController.contact = contact
+//        navigationController?.pushViewController(detailViewController, animated: true)
+//    }
 }
 
 extension ContactListController: UISearchResultsUpdating  {
@@ -102,6 +118,7 @@ extension ContactListController: UISearchResultsUpdating  {
         guard let text = searchController.searchBar.text else{
             return
         }
+        
         let controller = searchController.searchResultsController as? SearchResultController
         controller?.viewModel = .init(searchedText: text)
     }

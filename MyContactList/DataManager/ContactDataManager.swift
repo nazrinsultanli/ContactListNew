@@ -36,6 +36,7 @@ class ContactDataManager {
             model.number = item.number
             model.company = item.company
             model.photo = item.photo
+            model.id = item.id
             try context.save()
         } catch {
             print(error.localizedDescription)
