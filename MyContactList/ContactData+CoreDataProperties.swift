@@ -21,6 +21,7 @@ extension ContactData {
     @NSManaged public var number: String?
     @NSManaged public var photo: String?
     @NSManaged public var surname: String?
+    @NSManaged public var id: UUID?
 
 }
 

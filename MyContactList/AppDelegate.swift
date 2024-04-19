@@ -11,15 +11,24 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        let mockData = MockData()
-        mockData.storeToDataBase()
-        return true
-    }
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            
+            
+//            let mockData = MockData()
+//            mockData.storeToDataBase()
+//            
+            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+            if launchedBefore  {
+                print("Not first launch.")
+            } else {
+                let mockData = MockData()
+                mockData.storeToDataBase()
+                print("First launch, setting UserDefault.")
+                UserDefaults.standard.set(true, forKey: "launchedBefore")
+            }
+            
+            return true
+        }
 
     // MARK: UISceneSession Lifecycle
 

@@ -9,6 +9,7 @@ import Foundation
 
 
 struct ContactDataStruct {
+    var id = UUID()
     var name: String
     var surname: String
     var number: String

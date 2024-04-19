@@ -11,8 +11,9 @@ import UIKit
 
 class MockData {
    
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let context = AppDelegate().persistentContainer.viewContext
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    lazy var context = appDelegate.persistentContainer.viewContext
+    
     func generateMockData() -> [ContactDataStruct] {
         var mockData: [ContactDataStruct] = []
         
@@ -27,9 +28,10 @@ class MockData {
         
         mockData += initialData
         
-        for _ in 1...28 {
-            let name = names.randomElement() ?? "Unknown"
-            let surname = surnames.randomElement() ?? "Unknown"
+        for i in 0..<names.count{
+
+            let name = names[i]
+            let surname = surnames[i]
             let number = "\(Int64.random(in: 9948518000000..<9948518009999))"
             let company = "Company"
             
@@ -41,6 +43,7 @@ class MockData {
     }
 
     func saveItems(item : ContactDataStruct) {
+        
         do {
             let model = ContactData(context: context)
             model.name = item.name
@@ -60,10 +63,4 @@ class MockData {
             saveItems(item: i)
         }
     }
-    
-//    
-//    init(){
-//        storeToDataBase()
-//    }
-
 }

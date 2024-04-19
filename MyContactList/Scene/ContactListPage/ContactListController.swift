@@ -8,23 +8,13 @@
 import UIKit
 import CoreData
 
-class ResultsVC: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .red
-        
-    }
-}
 
 
 class ContactListController: UIViewController {
-    let context = AppDelegate().persistentContainer.viewContext
-    var array = [String: [ContactData]]() // Dictionary to store contacts by section
-    var sectionTitles = [String]() // Array to store section titles
+
     
-    
-//    var viewModel = ContactListViewModel()
-    let searchController = UISearchController(searchResultsController:ResultsVC())
+    var viewModel = ContactListViewModel()
+    let searchController = UISearchController(searchResultsController:SearchResultController())
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +27,9 @@ class ContactListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchItemsfromDataBase()
+        viewModel.fetchItemsfromDataBase {
+            tableView.reloadData()
+        }
         setControllerUI()
         setSearchBar()
         setConstraints()
@@ -47,6 +39,11 @@ class ContactListController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Contact"
         view.backgroundColor = .white
+       
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image:  UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(plusButtonTapped))
+    }
+    @objc func plusButtonTapped() {
+        print("asasas")
     }
     
     func setSearchBar() {
@@ -65,56 +62,34 @@ class ContactListController: UIViewController {
         ])
     }
     
+    
 
-    func fetchItemsfromDataBase() {
-        do {
-            let contacts = try context.fetch(ContactData.fetchRequest()) as! [ContactData]
-            array.removeAll() // Clear existing data
-            sectionTitles.removeAll()
-            for contact in contacts {
-                let firstLetter = String(contact.name!.prefix(1)).uppercased()
-                if array[firstLetter] == nil {
-                    array[firstLetter] = [contact]
-                    sectionTitles.append(firstLetter)
-                } else {
-                    array[firstLetter]?.append(contact)
-                }
-            }
-            // Sort the array by section titles
-            for (key, value) in array {
-                array[key] = value.sorted(by: { $0.name! < $1.name! })
-            }
-            tableView.reloadData()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
 }
 
 extension ContactListController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitles.count
+        return viewModel.sectionTitles.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key = sectionTitles[section]
-        return array[key]?.count ?? 0
+        let key = viewModel.sectionTitles[section]
+        return viewModel.array[key]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        let key = sectionTitles[indexPath.section]
-        let contact = array[key]![indexPath.row]
-        cell.textLabel?.text = contact.name
+        let key = viewModel.sectionTitles[indexPath.section]
+        let contact = viewModel.array[key]![indexPath.row]
+        cell.textLabel?.text = (contact.name ?? "") + " " + (contact.surname ?? "")
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+        return viewModel.sectionTitles[section]
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles
+        return viewModel.sectionTitles
     }
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -127,8 +102,7 @@ extension ContactListController: UISearchResultsUpdating  {
         guard let text = searchController.searchBar.text else{
             return
         }
-        let vc = searchController.searchResultsController as? ResultsVC
-        vc?.view.backgroundColor = .yellow
-        print(text)
+        let controller = searchController.searchResultsController as? SearchResultController
+        controller?.viewModel = .init(searchedText: text)
     }
 }
