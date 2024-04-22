@@ -15,7 +15,8 @@ class ContactListController: UIViewController {
     
     var viewModel = ContactListViewModel()
     
-    let searchController = UISearchController(searchResultsController:SearchResultController())
+    let searchController = UISearchController(searchResultsController: SearchResultController())
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,16 +102,9 @@ extension ContactListController: UITableViewDelegate, UITableViewDataSource {
         guard let contact = viewModel.array[key]?[indexPath.row] else {
             return
         }
-        // Here you can navigate to a new view controller to show the detailed information
         print(contact)
     }
-//
-//    func showContactDetails(_ contact: ContactDataStruct) {
-//        // Instantiate a new view controller to show the details
-//        let detailViewController = ContactDetailViewController()
-//        detailViewController.contact = contact
-//        navigationController?.pushViewController(detailViewController, animated: true)
-//    }
+
 }
 
 extension ContactListController: UISearchResultsUpdating  {
@@ -119,7 +113,9 @@ extension ContactListController: UISearchResultsUpdating  {
             return
         }
         
-        let controller = searchController.searchResultsController as? SearchResultController
-        controller?.viewModel = .init(searchedText: text)
+        tableView.isHidden = !text.isEmpty
+        
+        (searchController.searchResultsController as! SearchResultController).getSearchText(text: text)
+
     }
 }

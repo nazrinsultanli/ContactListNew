@@ -26,10 +26,15 @@ class SearchResultController: UIViewController {
         tableView.backgroundColor = .clear
         return tableView
     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraints()
-       
+    }
+    
+    func getSearchText(text: String) {
+        viewModel = .init(searchedText: text)
+        tableView.reloadData()
     }
     
     func setConstraints() {
