@@ -7,8 +7,8 @@
 import UIKit
 
 class TopImageButtonLabelView: UIView {
-    private let title: String
-    private let imageName: String
+    private let action: ContactActions
+    
     
     private let backgroundView: UIView = {
         let view = UIView()
@@ -22,7 +22,7 @@ class TopImageButtonLabelView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
-        label.text = title
+        label.text = action.title
         label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .white
@@ -33,9 +33,8 @@ class TopImageButtonLabelView: UIView {
     
     private var imageView: UIImageView!
     
-    init(title: String, imageName: String) {
-        self.title = title
-        self.imageName = imageName
+    init(actions: ContactActions) {
+        self.action = actions
         super.init(frame: .zero)
         layout()
     }
@@ -50,7 +49,7 @@ class TopImageButtonLabelView: UIView {
         imageView.layer.cornerRadius = 5
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleToFill
-        imageView.image = UIImage(systemName: imageName)
+        imageView.image = UIImage(systemName: action.imageName)
         imageView.backgroundColor = .clear
         imageView.tintColor = .white
         

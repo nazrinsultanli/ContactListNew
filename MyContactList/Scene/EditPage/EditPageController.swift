@@ -9,8 +9,8 @@ import UIKit
 
 
 
-
 class EditPageController: UIViewController {
+    
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -18,12 +18,9 @@ class EditPageController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .brown
+        
 //        tableView.register(HomeTableCell.self, forCellReuseIdentifier: HomeTableCell.reuseID)
         tableView.register(EditPageHeaderView.self, forHeaderFooterViewReuseIdentifier: EditPageHeaderView.reuseID)
-
-//        tableView.tableHeaderView?.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.tableHeaderView = EditPageHeaderView(
-//            frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 180))
         
         return tableView
     }()
@@ -31,39 +28,34 @@ class EditPageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraints()
+        
     }
-    
 
     func setConstraints() {
-        view.backgroundColor = .white
         view.addSubview(tableView)
-        
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+
 }
 
 
 extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section
-//        return viewModel.items.count
-        10
+        2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-//        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableCell.reuseID, for: indexPath) as! HomeTableCell
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // Return the height of the row
-        return 200
+        return 100
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -84,13 +76,26 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // Return the height of the header view
         return 180
     }
     //MARK: ------
 
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.y < -150 {
+//            
+//        }
+//        print(scrollView.contentOffset.y)
+//    }
 }
 
 
 
 
+
+
+extension EditPageController: CustomNavigationBarDelegate {
+    func backButtonTapped() {
+        // Handle back button tap
+        navigationController?.popViewController(animated: true)
+    }
+}

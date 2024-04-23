@@ -8,29 +8,55 @@
 
 import UIKit
 
+enum ContactActions {
+    case messages
+    case call
+    case video
+    case mail
+    
+    var title: String{
+        switch self {
+        case .messages:
+            return  "message"
+        case .call:
+            return "call"
+        case .video:
+            return "video"
+        case .mail:
+            return "mail"
+        }
+    }
+    var imageName: String {
+        switch self {
+        case .messages:
+            return  "message.fill"
+        case .call:
+            return "phone.fill"
+        case .video:
+            return "video.fill"
+        case .mail:
+            return "envelope.fill"
+        }
+    }
+}
+
 
 class EditPageHeaderView: UITableViewHeaderFooterView {
     
     static let reuseID = "EditPageHeaderView"
     
-    private let titleUIView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        view.layer.cornerRadius = 10
+    
+    var titleUIView: UIView = {
+        let view = TopImageButtonLabelLargeView(name: "Nazrin", surname: "Dolkahnova", personImage: "assas")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     private lazy var hStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [TopImageButtonLabelView(title: "message",
-                                                                               imageName: "message.fill"),
-                                                       TopImageButtonLabelView(title: "call",
-                                                                               imageName: "phone.fill"),
-                                                       TopImageButtonLabelView(title: "video",
-                                                                               imageName: "video.fill"),
-                                                       TopImageButtonLabelView(title: "mail",
-                                                                               imageName: "envelope.fill")]
-        )
+        let stackView = UIStackView(arrangedSubviews: [TopImageButtonLabelView(actions: .messages),
+                                                       TopImageButtonLabelView(actions: .call),
+                                                       TopImageButtonLabelView(actions: .video),
+                                                       TopImageButtonLabelView(actions: .mail) ])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.distribution = .fillEqually
