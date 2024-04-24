@@ -23,7 +23,7 @@ class TopImageButtonLabelLargeView: UIView {
     private let NSView: UIView = {
         let view = UIView()
         view.backgroundColor = .red
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = 50
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -33,7 +33,7 @@ class TopImageButtonLabelLargeView: UIView {
         label.textAlignment = .center
         label.textColor = .black
         label.text = String(name.prefix(1)) + String(surname.prefix(1))
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 50)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .white
         label.textColor = .white
@@ -45,24 +45,26 @@ class TopImageButtonLabelLargeView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
-        label.text = name + surname
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.text = name + " " + surname
+        label.font = UIFont.systemFont(ofSize: 30)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .white
         label.textColor = .white
-        
         return label
     }()
     
     
-    init(name: String, surname: String, personImage: String) {
+    init(name: String, surname: String, personImage: String, frame: CGRect) {
         self.name = name
         self.surname = surname
         self.personImage = personImage
-        super.init(frame: .zero)
+        super.init(frame: frame)
         layout()
+        
+        backgroundView.backgroundColor = .systemIndigo
     }
     
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -86,8 +88,8 @@ class TopImageButtonLabelLargeView: UIView {
 
             NSView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
             NSView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
-            NSView.widthAnchor.constraint(equalToConstant: 30),
-            NSView.heightAnchor.constraint(equalToConstant: 30),
+            NSView.widthAnchor.constraint(equalToConstant: 100),
+            NSView.heightAnchor.constraint(equalToConstant: 100),
             
             
             NSPrefixLabel.topAnchor.constraint(equalTo: NSView.topAnchor),

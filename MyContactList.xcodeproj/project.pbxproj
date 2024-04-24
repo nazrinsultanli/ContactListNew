@@ -21,6 +21,7 @@
 		1483A83D2BD14A5100D403A6 /* MyContactListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483A83C2BD14A5100D403A6 /* MyContactListTests.swift */; };
 		1483A8472BD14A5100D403A6 /* MyContactListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483A8462BD14A5100D403A6 /* MyContactListUITests.swift */; };
 		1483A8492BD14A5100D403A6 /* MyContactListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483A8482BD14A5100D403A6 /* MyContactListUITestsLaunchTests.swift */; };
+		14987A622BD946CA00237ADE /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14987A612BD946CA00237ADE /* CustomNavBar.swift */; };
 		14B329B82BD28F7A00AFC656 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329B72BD28F7A00AFC656 /* SearchResultController.swift */; };
 		14B329BC2BD293B300AFC656 /* ContactData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329BA2BD293B300AFC656 /* ContactData+CoreDataClass.swift */; };
 		14B329BD2BD293B300AFC656 /* ContactData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329BB2BD293B300AFC656 /* ContactData+CoreDataProperties.swift */; };
@@ -67,6 +68,7 @@
 		1483A8422BD14A5100D403A6 /* MyContactListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyContactListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1483A8462BD14A5100D403A6 /* MyContactListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactListUITests.swift; sourceTree = "<group>"; };
 		1483A8482BD14A5100D403A6 /* MyContactListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		14987A612BD946CA00237ADE /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		14B329B72BD28F7A00AFC656 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		14B329BA2BD293B300AFC656 /* ContactData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		14B329BB2BD293B300AFC656 /* ContactData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				1436F4952BD7A69C00F0CDBB /* EditPageHeaderView.swift */,
 				1436F4972BD7A88800F0CDBB /* TopImageButtonLabelView.swift */,
 				1436F4992BD7CE8900F0CDBB /* TopImageButtonLabelLargeView.swift */,
+				14987A612BD946CA00237ADE /* CustomNavBar.swift */,
 			);
 			path = HeaderView;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				1436F49A2BD7CE8900F0CDBB /* TopImageButtonLabelLargeView.swift in Sources */,
 				1436F4962BD7A69C00F0CDBB /* EditPageHeaderView.swift in Sources */,
 				1483A8232BD14A5000D403A6 /* AppDelegate.swift in Sources */,
+				14987A622BD946CA00237ADE /* CustomNavBar.swift in Sources */,
 				1436F49D2BD7EB0600F0CDBB /* CustomNavigationBar.swift in Sources */,
 				14F9F1C42BD267750091FE70 /* ContactDataStruct.swift in Sources */,
 				14210CDD2BD69F12001D5EC4 /* EditPageController.swift in Sources */,

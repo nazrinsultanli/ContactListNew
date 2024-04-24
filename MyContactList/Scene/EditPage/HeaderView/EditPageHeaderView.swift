@@ -42,17 +42,27 @@ enum ContactActions {
 
 
 class EditPageHeaderView: UITableViewHeaderFooterView {
+    private var isShowTitleDidSet: Bool = false {
+        didSet {
+            titleName.isHidden = isShowTitleDidSet
+        }
+    }
     
+   
     static let reuseID = "EditPageHeaderView"
     
+     lazy var titleName: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.tintColor = .white
+        label.textColor = .white
+        return label
+    }()
     
-//    var titleUIView: UIView = {
-//        let view = TopImageButtonLabelLargeView(name: "Nazrin", surname: "Dolkahnova", personImage: "assas")
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-
-    private lazy var hStackView: UIStackView = {
+      var hStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [TopImageButtonLabelView(actions: .messages),
                                                        TopImageButtonLabelView(actions: .call),
                                                        TopImageButtonLabelView(actions: .video),
@@ -63,6 +73,8 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         configureContraints()
@@ -73,20 +85,16 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
     }
     
     private func configureContraints() {
-//        addSubview(titleUIView)
+//        addSubview(titleName)
         addSubview(hStackView)
-        
         NSLayoutConstraint.activate([
-//            titleUIView.topAnchor.constraint(equalTo: topAnchor),
-//            titleUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            titleUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
-////            titleUIView.heightAnchor.constraint(equalToConstant: 100),
-            
+
             hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            hStackView.heightAnchor.constraint(equalToConstant: 60),
             hStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            
+            hStackView.heightAnchor.constraint(equalToConstant: 60),
 
         ])
     }
