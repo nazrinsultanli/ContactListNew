@@ -46,11 +46,11 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
     static let reuseID = "EditPageHeaderView"
     
     
-    var titleUIView: UIView = {
-        let view = TopImageButtonLabelLargeView(name: "Nazrin", surname: "Dolkahnova", personImage: "assas")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    var titleUIView: UIView = {
+//        let view = TopImageButtonLabelLargeView(name: "Nazrin", surname: "Dolkahnova", personImage: "assas")
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
 
     private lazy var hStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [TopImageButtonLabelView(actions: .messages),
@@ -73,16 +73,16 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
     }
     
     private func configureContraints() {
-        addSubview(titleUIView)
+//        addSubview(titleUIView)
         addSubview(hStackView)
         
         NSLayoutConstraint.activate([
-            titleUIView.topAnchor.constraint(equalTo: topAnchor),
-            titleUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            titleUIView.heightAnchor.constraint(equalToConstant: 100),
+//            titleUIView.topAnchor.constraint(equalTo: topAnchor),
+//            titleUIView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            titleUIView.trailingAnchor.constraint(equalTo: trailingAnchor),
+////            titleUIView.heightAnchor.constraint(equalToConstant: 100),
             
-            hStackView.topAnchor.constraint(equalTo: titleUIView.bottomAnchor, constant: 5),
+            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             hStackView.heightAnchor.constraint(equalToConstant: 60),
