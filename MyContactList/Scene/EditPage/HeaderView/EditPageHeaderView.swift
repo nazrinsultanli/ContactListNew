@@ -42,7 +42,7 @@ enum ContactActions {
 
 
 class EditPageHeaderView: UITableViewHeaderFooterView {
-    private var isShowTitleDidSet: Bool = false {
+    private var isShowTitleDidSet: Bool = true {
         didSet {
             titleName.isHidden = isShowTitleDidSet
         }
@@ -55,10 +55,11 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.tintColor = .white
-        label.textColor = .white
+         
+        label.textColor = .cyan
         return label
     }()
     
@@ -83,17 +84,20 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    // 60+10 + 5 +5
     
     private func configureContraints() {
-//        addSubview(titleName)
+        addSubview(titleName)
         addSubview(hStackView)
+        titleName.backgroundColor = .yellow
         NSLayoutConstraint.activate([
+            
+            titleName.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            titleName.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            hStackView.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 5),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            hStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            
             hStackView.heightAnchor.constraint(equalToConstant: 60),
 
         ])

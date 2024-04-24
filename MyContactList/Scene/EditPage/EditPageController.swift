@@ -10,9 +10,8 @@ import UIKit
 
 
 class EditPageController: UIViewController {
-
-    private var isShowTitle: Bool = false
-    private let headerHeight: CGFloat = 200
+    
+    private let headerHeight: CGFloat = 150
     private var headerView: UIView!
     
     private var myheaderView: EditPageHeaderView?
@@ -24,7 +23,7 @@ class EditPageController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = .red
         
-//        tableView.register(HomeTableCell.self, forCellReuseIdentifier: HomeTableCell.reuseID)
+        //        tableView.register(HomeTableCell.self, forCellReuseIdentifier: HomeTableCell.reuseID)
         tableView.register(EditPageHeaderView.self, forHeaderFooterViewReuseIdentifier: EditPageHeaderView.reuseID)
         
         return tableView
@@ -32,23 +31,23 @@ class EditPageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .green
         setConstraints()
         setHeaderView()
-
+        
     }
-
+    func setHeaderView(){
+        headerView = TopImageButtonLabelLargeView(
+            name: "nazrin",
+            surname: "dolkhanoiva",
+            personImage: "naznaznaz",
+            frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerHeight)
+        )
+        tableView.tableHeaderView = headerView
+        
+    }
     
-        func setHeaderView(){
-            headerView = TopImageButtonLabelLargeView(
-                name: "nazrin",
-                surname: "dolkhanoiva",
-                personImage: "naznaznaz",
-                frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerHeight)
-            )
-            tableView.tableHeaderView = headerView
-    
-        }
-
     
     func setConstraints() {
         view.addSubview(tableView)
@@ -59,23 +58,31 @@ class EditPageController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-
-    func setNavbar() -> UIView {
+    
+    func setNavbarWhenScrolled() -> UIView {
         let titleContainer = UIView()
-        titleContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45)
-        titleContainer.backgroundColor = .purple
-        let searchIcon = UIButton()
-        //searchIcon.setImage(UIImage(named: "search_icon"), for: UIControlState.normal)
-        searchIcon.backgroundColor = UIColor.red
-        searchIcon.layer.frame = CGRect(x: 0, y: 8, width: 28, height: 100)
-        titleContainer.addSubview(searchIcon)
+        titleContainer.backgroundColor = .yellow
+        titleContainer.layer.cornerRadius = 20
+        titleContainer.translatesAutoresizingMaskIntoConstraints = false
         
         let titleLabel = UILabel()
-        titleLabel.frame = CGRect(x: 28, y: 8, width: UIScreen.main.bounds.size.width-28, height: 100)
-        titleLabel.textColor = UIColor.blue//(red:255, green:255, blue:255, alpha:1.0)
+        titleLabel.textColor = UIColor.blue
+        titleLabel.text = "ST"
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         titleContainer.addSubview(titleLabel)
-        titleLabel.text = "Sample Text"
+        
+        // Add constraints to center the label in the titleContainer
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
+            titleContainer.widthAnchor.constraint(equalToConstant: 40),
+            titleContainer.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
         return titleContainer
+        
+        
         
     }
     
@@ -86,7 +93,7 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         20
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "name surname"
@@ -96,39 +103,38 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     // MARK:  --- HEADER View
-
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         myheaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: EditPageHeaderView.reuseID) as? EditPageHeaderView
         myheaderView?.titleName.text = "nazik"
+        myheaderView?.titleName.isHidden = true
         return myheaderView
     }
-
-    
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 110
+        return 90
     }
     //MARK: ------
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let offsetY = scrollView.contentOffset.y
-            if offsetY > 125 {
-                self.navigationItem.titleView = setNavbar()
-                myheaderView?.titleName.isHidden = true
-
-                }
-                else {
-                    self.navigationItem.titleView?.isHidden = true
-                    myheaderView?.titleName.isHidden = false
-
-            }
+        let offsetY = scrollView.contentOffset.y
+        if offsetY > 20 {
+            self.navigationItem.titleView = setNavbarWhenScrolled()
+            myheaderView?.titleName.isHidden = false
+            
         }
+        else {
+            self.navigationItem.titleView?.isHidden = true
+            myheaderView?.titleName.isHidden = true
+            
+        }
+    }
 }
 

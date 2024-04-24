@@ -80,13 +80,13 @@ class TopImageButtonLabelLargeView: UIView {
         // stack 60
         NSLayoutConstraint.activate([
             
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: -40),
             backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
 
-            NSView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
+            NSView.topAnchor.constraint(equalTo: backgroundView.topAnchor),
             NSView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             NSView.widthAnchor.constraint(equalToConstant: 100),
             NSView.heightAnchor.constraint(equalToConstant: 100),
@@ -97,9 +97,9 @@ class TopImageButtonLabelLargeView: UIView {
             NSPrefixLabel.trailingAnchor.constraint(equalTo: NSView.trailingAnchor),
             NSPrefixLabel.bottomAnchor.constraint(equalTo: NSView.bottomAnchor),
 
-            titleName.topAnchor.constraint(equalTo: NSView.bottomAnchor, constant: 10),
+            titleName.topAnchor.constraint(equalTo: NSView.bottomAnchor),
             titleName.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
-            titleName.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -10)
+            titleName.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 0)
         ])
 
     }
