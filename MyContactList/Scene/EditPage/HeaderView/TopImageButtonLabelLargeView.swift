@@ -22,7 +22,7 @@ class TopImageButtonLabelLargeView: UIView {
     
     private let NSView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .green
         view.layer.cornerRadius = 50
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

@@ -95,7 +95,7 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
 //            titleName.topAnchor.constraint(equalTo: topAnchor, constant: 5),
 //            titleName.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             hStackView.heightAnchor.constraint(equalToConstant: 60),

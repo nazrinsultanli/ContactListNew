@@ -29,6 +29,7 @@ class EditPageController: UIViewController {
         return tableView
     }()
     
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +37,42 @@ class EditPageController: UIViewController {
         setConstraints()
         setHeaderView()
         navigationController?.navigationBar.prefersLargeTitles = false
+                
 
+        
+    }
+    
+    func makeLargeNavbar(height: CGFloat) {
+        let height = height
+                
+        let navbar = UINavigationBar()
+        navbar.frame.size.width = UIScreen.main.bounds.size.width
+        navbar.frame.size.height = CGFloat(height)
+        navbar.frame = CGRect(x: 0,
+                              y: 0,
+                              width: navbar.frame.size.width,
+                              height: navbar.frame.size.height)
+           
+        navbar.barTintColor = .purple
+        navbar.tintColor = .brown
+            
+                
+        let navItem = UINavigationItem()
+        navItem.title = "Add employee"
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
+        
+        navbar.items = [navItem]
+        navbar.addSubview(TopImageButtonLabelSmallView(name: "naz", surname: "xan", personImage: "as", frame: CGRect(x: 0,
+                                                                                                                     y: 0,
+                                                                                                                     width: navbar.frame.size.width,
+                                                                                                                     height: navbar.frame.size.height)))
+
+        view.addSubview(navbar)
+                
+        self.view?.frame = CGRect(x: 0, y: Int(height), width: Int(UIScreen.main.bounds.width), height: (Int(UIScreen.main.bounds.height) - Int(height)))
+        self.additionalSafeAreaInsets.top = CGFloat(height)
+    }
+    @objc func cancel(){
         
     }
     func setHeaderView(){
@@ -88,6 +124,8 @@ class EditPageController: UIViewController {
         
     }
     
+    
+    
 }
 
 
@@ -121,21 +159,27 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 90
+        return 65
     }
     //MARK: ------
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        if offsetY > 20 {
-            self.navigationItem.titleView = setNavbarWhenScrolled()
-            myheaderView?.titleName.isHidden = false
-            
+        if offsetY > 40 {
+//            self.navigationItem.titleView = setNavbarWhenScrolled()
+//            myheaderView?.titleName.isHidden = false
+//            let height = CGFloat(200)
+//            navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
+//            navigationController?.navigationBar.backgroundColor = .cyan
+            makeLargeNavbar(height: 90)
+            self.navigationController?.isNavigationBarHidden = true
+
         }
         else {
             self.navigationItem.titleView?.isHidden = true
             myheaderView?.titleName.isHidden = true
-            
+            makeLargeNavbar(height: 0)
+            self.navigationController?.isNavigationBarHidden = false
             
         }
     }
