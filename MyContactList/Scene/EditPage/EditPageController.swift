@@ -35,6 +35,8 @@ class EditPageController: UIViewController {
         view.backgroundColor = .green
         setConstraints()
         setHeaderView()
+        navigationController?.navigationBar.prefersLargeTitles = false
+
         
     }
     func setHeaderView(){
@@ -60,25 +62,25 @@ class EditPageController: UIViewController {
     }
     
     func setNavbarWhenScrolled() -> UIView {
-        let titleContainer = UIView()
+        let titleContainer = UIStackView()
+        titleContainer.axis = .vertical
+        titleContainer.spacing = 10
+        
         titleContainer.backgroundColor = .yellow
         titleContainer.layer.cornerRadius = 20
-        titleContainer.translatesAutoresizingMaskIntoConstraints = false
+//        titleContainer.translatesAutoresizingMaskIntoConstraints = false
         
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.blue
         titleLabel.text = "ST"
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        titleContainer.addSubview(titleLabel)
+        let label = UILabel()
         
-        // Add constraints to center the label in the titleContainer
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: titleContainer.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
-            titleContainer.widthAnchor.constraint(equalToConstant: 40),
-            titleContainer.heightAnchor.constraint(equalToConstant: 40)
-        ])
+        titleContainer.addArrangedSubview(titleLabel)
+        titleContainer.addArrangedSubview(label)
+        
+        
         
         return titleContainer
         
@@ -133,6 +135,7 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
         else {
             self.navigationItem.titleView?.isHidden = true
             myheaderView?.titleName.isHidden = true
+            
             
         }
     }

@@ -87,15 +87,15 @@ class EditPageHeaderView: UITableViewHeaderFooterView {
     // 60+10 + 5 +5
     
     private func configureContraints() {
-        addSubview(titleName)
+//        addSubview(titleName)
         addSubview(hStackView)
         titleName.backgroundColor = .yellow
         NSLayoutConstraint.activate([
             
-            titleName.topAnchor.constraint(equalTo: topAnchor, constant: 5),
-            titleName.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            titleName.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+//            titleName.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            hStackView.topAnchor.constraint(equalTo: titleName.bottomAnchor, constant: 5),
+            hStackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             hStackView.heightAnchor.constraint(equalToConstant: 60),

@@ -80,7 +80,7 @@ class TopImageButtonLabelLargeView: UIView {
         // stack 60
         NSLayoutConstraint.activate([
             
-            backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: -40),
+            backgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
