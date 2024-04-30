@@ -12,11 +12,14 @@ import UIKit
 
 
 class EditPageController: UIViewController {
-    
+    var contact: ContactData?
     private let headerForLargeViewHeight: CGFloat = 150
     private var headerForLargeView: UIView!
-    private var headerForSmallView = TopImageButtonLabelSmallView(name: "atam", surname: "anam", personImage: "anamatam", frame: .zero)
-        
+    private lazy var headerForSmallView = TopImageButtonLabelSmallView(name: contact?.name ?? "",
+                                                                  surname: contact?.surname ?? "",
+                                                                  personImage: contact?.photo ?? "",
+                                                                       frame: .zero)
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,19 +27,22 @@ class EditPageController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = .systemGray
         tableView.register(EditPageHeaderView.self, forHeaderFooterViewReuseIdentifier: EditPageHeaderView.reuseID)
+        tableView.register(ContactDetailTableCell.self, forCellReuseIdentifier: ContactDetailTableCell.reuseID)
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
-        
-        
-        
     }
    
-    // Setup views and constraints
+    init(contact: ContactData? = nil) {
+        self.contact = contact
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     private func setupViews() {
         view.backgroundColor = .systemGray
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -48,18 +54,16 @@ class EditPageController: UIViewController {
         
     }
     
-    // Setup the large header view for the table
     private func setLargeHeaderView() {
         headerForLargeView = TopImageButtonLabelLargeView(
-            name: "Tarlan",
-            surname: "Sultanli",
-            personImage: "naznaznaz",
+            name: contact?.name ?? "",
+            surname: contact?.surname ?? "",
+            personImage: contact?.photo ?? "",
             frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: headerForLargeViewHeight)
         )
         tableView.tableHeaderView = headerForLargeView
     }
     
-    // Configure constraints for tableView and small header view
     private func setConstraints() {
         headerForSmallView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -80,19 +84,19 @@ class EditPageController: UIViewController {
 
 extension EditPageController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "name surname"
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailTableCell.reuseID, for: indexPath) as! ContactDetailTableCell
+        cell.configure(with: contact!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 10+80+10+90+10+120+30
     }
-    
+    //MARK: Header-------------
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
@@ -112,7 +116,7 @@ extension EditPageController: UITableViewDelegate, UITableViewDataSource {
               headerForSmallView.isHidden = true
               headerForLargeView.isHidden = false //38 -> 60
               let overlay = UIVisualEffectView()
-              // Put it somewhere, give it a frame...
+
               UIView.animate(withDuration: 0.5) {
                   overlay.effect = UIBlurEffect(style: .light)
               }

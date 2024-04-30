@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14210CDD2BD69F12001D5EC4 /* EditPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14210CDC2BD69F12001D5EC4 /* EditPageController.swift */; };
+		1431A0BE2BDBA15800A4545C /* CellStructModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431A0BD2BDBA15800A4545C /* CellStructModel.swift */; };
+		1431A0C02BDBBCB100A4545C /* ContactDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431A0BF2BDBBCB100A4545C /* ContactDetailTableCell.swift */; };
 		1436F4962BD7A69C00F0CDBB /* EditPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436F4952BD7A69C00F0CDBB /* EditPageHeaderView.swift */; };
 		1436F4982BD7A88800F0CDBB /* TopImageButtonLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436F4972BD7A88800F0CDBB /* TopImageButtonLabelView.swift */; };
 		1436F49A2BD7CE8900F0CDBB /* TopImageButtonLabelLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436F4992BD7CE8900F0CDBB /* TopImageButtonLabelLargeView.swift */; };
@@ -26,6 +28,10 @@
 		14B329BD2BD293B300AFC656 /* ContactData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329BB2BD293B300AFC656 /* ContactData+CoreDataProperties.swift */; };
 		14B329BF2BD295AC00AFC656 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329BE2BD295AC00AFC656 /* SearchResultViewModel.swift */; };
 		14B329C22BD2971D00AFC656 /* ContactDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B329C12BD2971D00AFC656 /* ContactDataManager.swift */; };
+		14CF2A0D2BE11F05006B8935 /* EditPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CF2A0C2BE11F05006B8935 /* EditPageViewModel.swift */; };
+		14CF2A102BE1213F006B8935 /* PhotoPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CF2A0F2BE1213F006B8935 /* PhotoPoster.swift */; };
+		14CF2A122BE12724006B8935 /* DetailMobileUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CF2A112BE12724006B8935 /* DetailMobileUIView.swift */; };
+		14CF2A142BE12EE9006B8935 /* DetailNotesUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CF2A132BE12EE9006B8935 /* DetailNotesUIView.swift */; };
 		14F9F1C22BD267150091FE70 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9F1C12BD267150091FE70 /* MockData.swift */; };
 		14F9F1C42BD267750091FE70 /* ContactDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9F1C32BD267750091FE70 /* ContactDataStruct.swift */; };
 		14F9F1CB2BD26DD80091FE70 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F9F1CA2BD26DD80091FE70 /* ContactListViewModel.swift */; };
@@ -50,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		14210CDC2BD69F12001D5EC4 /* EditPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageController.swift; sourceTree = "<group>"; };
+		1431A0BD2BDBA15800A4545C /* CellStructModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStructModel.swift; sourceTree = "<group>"; };
+		1431A0BF2BDBBCB100A4545C /* ContactDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailTableCell.swift; sourceTree = "<group>"; };
 		1436F4952BD7A69C00F0CDBB /* EditPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageHeaderView.swift; sourceTree = "<group>"; };
 		1436F4972BD7A88800F0CDBB /* TopImageButtonLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageButtonLabelView.swift; sourceTree = "<group>"; };
 		1436F4992BD7CE8900F0CDBB /* TopImageButtonLabelLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopImageButtonLabelLargeView.swift; sourceTree = "<group>"; };
@@ -72,6 +80,10 @@
 		14B329BB2BD293B300AFC656 /* ContactData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		14B329BE2BD295AC00AFC656 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		14B329C12BD2971D00AFC656 /* ContactDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataManager.swift; sourceTree = "<group>"; };
+		14CF2A0C2BE11F05006B8935 /* EditPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPageViewModel.swift; sourceTree = "<group>"; };
+		14CF2A0F2BE1213F006B8935 /* PhotoPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPoster.swift; sourceTree = "<group>"; };
+		14CF2A112BE12724006B8935 /* DetailMobileUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMobileUIView.swift; sourceTree = "<group>"; };
+		14CF2A132BE12EE9006B8935 /* DetailNotesUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNotesUIView.swift; sourceTree = "<group>"; };
 		14F9F1C12BD267150091FE70 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		14F9F1C32BD267750091FE70 /* ContactDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDataStruct.swift; sourceTree = "<group>"; };
 		14F9F1CA2BD26DD80091FE70 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
@@ -105,8 +117,11 @@
 		14210CDB2BD69EE7001D5EC4 /* EditPage */ = {
 			isa = PBXGroup;
 			children = (
+				14CF2A152BE12F88006B8935 /* Model */,
+				14CF2A0E2BE1211C006B8935 /* tableCell Views */,
 				1436F49B2BD7D1F900F0CDBB /* HeaderView */,
 				14210CDC2BD69F12001D5EC4 /* EditPageController.swift */,
+				1431A0BF2BDBBCB100A4545C /* ContactDetailTableCell.swift */,
 			);
 			path = EditPage;
 			sourceTree = "<group>";
@@ -211,6 +226,25 @@
 				14B329C12BD2971D00AFC656 /* ContactDataManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		14CF2A0E2BE1211C006B8935 /* tableCell Views */ = {
+			isa = PBXGroup;
+			children = (
+				14CF2A0F2BE1213F006B8935 /* PhotoPoster.swift */,
+				14CF2A112BE12724006B8935 /* DetailMobileUIView.swift */,
+				14CF2A132BE12EE9006B8935 /* DetailNotesUIView.swift */,
+			);
+			path = "tableCell Views";
+			sourceTree = "<group>";
+		};
+		14CF2A152BE12F88006B8935 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14CF2A0C2BE11F05006B8935 /* EditPageViewModel.swift */,
+				1431A0BD2BDBA15800A4545C /* CellStructModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		14F9F1C02BD267040091FE70 /* Helper */ = {
@@ -363,9 +397,12 @@
 				14B329C22BD2971D00AFC656 /* ContactDataManager.swift in Sources */,
 				14B329BC2BD293B300AFC656 /* ContactData+CoreDataClass.swift in Sources */,
 				14B329BF2BD295AC00AFC656 /* SearchResultViewModel.swift in Sources */,
+				14CF2A102BE1213F006B8935 /* PhotoPoster.swift in Sources */,
 				14B329BD2BD293B300AFC656 /* ContactData+CoreDataProperties.swift in Sources */,
+				1431A0C02BDBBCB100A4545C /* ContactDetailTableCell.swift in Sources */,
 				14F9F1CB2BD26DD80091FE70 /* ContactListViewModel.swift in Sources */,
 				1483A82D2BD14A5000D403A6 /* MyContactList.xcdatamodeld in Sources */,
+				1431A0BE2BDBA15800A4545C /* CellStructModel.swift in Sources */,
 				1436F4982BD7A88800F0CDBB /* TopImageButtonLabelView.swift in Sources */,
 				14B329B82BD28F7A00AFC656 /* SearchResultController.swift in Sources */,
 				1483A8272BD14A5000D403A6 /* ContactListController.swift in Sources */,
@@ -375,8 +412,11 @@
 				14987A642BDA4A1300237ADE /* TopImageButtonLabelSmallView.swift in Sources */,
 				14F9F1C42BD267750091FE70 /* ContactDataStruct.swift in Sources */,
 				14210CDD2BD69F12001D5EC4 /* EditPageController.swift in Sources */,
+				14CF2A0D2BE11F05006B8935 /* EditPageViewModel.swift in Sources */,
 				14F9F1C22BD267150091FE70 /* MockData.swift in Sources */,
 				1483A8252BD14A5000D403A6 /* SceneDelegate.swift in Sources */,
+				14CF2A142BE12EE9006B8935 /* DetailNotesUIView.swift in Sources */,
+				14CF2A122BE12724006B8935 /* DetailMobileUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

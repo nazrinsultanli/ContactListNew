@@ -102,8 +102,10 @@ extension ContactListController: UITableViewDelegate, UITableViewDataSource {
         guard let contact = viewModel.array[key]?[indexPath.row] else {
             return
         }
+        
         let controller = EditPageController()
         navigationController?.show(controller, sender: nil)
+        controller.contact = contact
         print(contact)
     }
 
